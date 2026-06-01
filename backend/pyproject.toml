@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "backend"
 version = "0.1.0"
-description = "Reativa Content Factory — backend"
+description = "Content Factory — backend"
 authors = ["Pablo"]
 package-mode = false
 
@@ -10,6 +10,8 @@ python = "^3.11"
 fastapi = "^0.115.0"
 uvicorn = {extras = ["standard"], version = "^0.32.0"}
 pydantic-settings = "^2.6.0"
+sqlalchemy = "^2.0.50"
+psycopg = {extras = ["binary"], version = "^3.3.4"}
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.3.0"
