@@ -9,6 +9,7 @@ from app.models.video_job import VideoJob
 from app.models.video_job import VideoJob 
 from app.models.source import Source 
 from app.models.fact import Fact 
+from app.models.editorial import EditorialAngle
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url)
