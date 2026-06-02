@@ -6,6 +6,9 @@ from alembic import context
 from app.core.config import settings
 from app.core.db import Base
 from app.models.video_job import VideoJob 
+from app.models.video_job import VideoJob 
+from app.models.source import Source 
+from app.models.fact import Fact 
 
 config = context.config
 config.set_main_option("sqlalchemy.url", settings.database_url)
