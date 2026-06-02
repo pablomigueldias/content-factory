@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from app.core.db import get_db
 from app.models.video_job import VideoJob
 from app.schemas.video_job import VideoJobCreate, VideoJobRead
+from app.orchestrator.pipeline import run_pipeline
 
 router = APIRouter(prefix="/jobs", tags=["jobs"])
 
@@ -30,4 +31,13 @@ def get_job(job_id: uuid.UUID, db: Session = Depends(get_db)) -> VideoJob:
     job = db.get(VideoJob, job_id)
     if job is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job not found")
+    return job
+
+@router.post("/{job_id}/run", response_model=VideoJobRead)
+def run_job(job_id: uuid.UUID, db: Session = Depends(get_db)) -> VideoJob:
+    job = db.get(VideoJob, job_id)
+    if job is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job not found")
+    run_pipeline(job, db)
+    db.refresh(job)
     return job
