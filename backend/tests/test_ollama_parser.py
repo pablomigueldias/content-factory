@@ -11,3 +11,7 @@ def test_parse_wrapped_object():
 
 def test_parse_filters_empty():
     assert _parse_facts('["  ", "válido", ""]') == ["válido"]
+
+def test_parse_facts_as_keys():
+    raw = '{"A luz não escapa.": "", "O horizonte de eventos é um limite.": ""}'
+    assert _parse_facts(raw) == ["A luz não escapa.", "O horizonte de eventos é um limite."]
