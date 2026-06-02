@@ -1,18 +1,60 @@
+# ---------- Python / Backend ----------
 __pycache__/
 *.py[cod]
+*.egg-info/
 .venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+coverage/
+htmlcov/
+.coverage
+.coverage.*
+
+# ---------- Segredos / Config ----------
 .env
-.DS_Store
+.env.*
+!.env.example
+
+# ---------- Node / Frontend (Fase 10) ----------
 node_modules/
-.vscode/
+.next/
+out/
 dist/
 build/
+*.tsbuildinfo
+.npm/
+.yarn/
+
+# ---------- Mídia gerada pelo pipeline ----------
+# (áudio, vídeo, imagens e legendas produzidos pelos agentes — nunca vão pro git)
+media/
+outputs/
+assets_cache/
+*.mp4
+*.wav
+*.mp3
+*.srt
+*.png
+*.jpg
+*.jpeg
+tmp/
+
+# ---------- Modelos locais / IA ----------
+*.gguf
+*.safetensors
+*.bin
+.ollama/
+models/
+
+# ---------- Sistema / Editor ----------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
 *.log
 *.bak
 *.tmp
 *.swp
 *.swo
-*.egg-info/
-coverage/
-htmlcov/
-.pytest_cache/
