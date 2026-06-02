@@ -29,7 +29,9 @@ def test_source_with_facts_cascade(db_session):
     assert len(source.facts) == 2
     assert source.facts[0].verified is False
 
-    # apagar a source deve apagar os facts (cascade)
+    assert source.reliability == 50
+    assert source.published_at is None
+
     db_session.delete(source)
     db_session.commit()
     assert db_session.query(Fact).count() == 0
