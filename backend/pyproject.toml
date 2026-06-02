@@ -22,6 +22,9 @@ ruff = "^0.7.0"
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+markers = [
+    "integration: teste que depende do posgres no ar"
+]
 
 [tool.ruff]
 line-length = 100

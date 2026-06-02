@@ -1,6 +1,9 @@
 from sqlalchemy import text
 from app.core.db import engine
 
+import pytest
+
+pytestmark = pytest.mark.integration
 
 def test_database_connection():
     with engine.connect() as conn:

@@ -2,6 +2,10 @@ from sqlalchemy import inspect
 
 from app.core.db import engine
 
+import pytest
+
+pytestmark = pytest.mark.integration
+
 
 def test_video_job_table_exists():
     inspector = inspect(engine)

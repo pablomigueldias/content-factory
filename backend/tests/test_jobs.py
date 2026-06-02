@@ -1,3 +1,8 @@
+import pytest
+
+pytestmark = pytest.mark.integration
+
+
 def test_create_job(client):
     response = client.post("/jobs", json={"topic": "Por que o céu é azul"})
     assert response.status_code == 201

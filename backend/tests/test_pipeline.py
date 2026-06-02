@@ -1,6 +1,10 @@
 from app.models.video_job import JobStatus, VideoJob
 from app.orchestrator.pipeline import run_pipeline
 
+import pytest
+
+pytestmark = pytest.mark.integration
+
 
 def test_pipeline_stops_at_review(db_session):
     job = VideoJob(topic="Por que os gatos ronronam")
