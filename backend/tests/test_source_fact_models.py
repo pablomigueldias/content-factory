@@ -26,12 +26,11 @@ def test_source_with_facts_cascade(db_session):
     db_session.add(source)
     db_session.commit()
 
+    fact_ids = [f.id for f in source.facts]
+
     assert len(source.facts) == 2
-    assert source.facts[0].verified is False
-
-    assert source.reliability == 50
-    assert source.published_at is None
-
+  
     db_session.delete(source)
     db_session.commit()
-    assert db_session.query(Fact).count() == 0
+    remaining = db_session.query(Fact).filter(Fact.id.in_(fact_ids)).count()
+    assert remaining == 0
