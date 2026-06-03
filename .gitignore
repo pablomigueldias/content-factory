@@ -47,6 +47,10 @@ tmp/
 *.bin
 .ollama/
 models/
+# ...mas o pacote-fonte de models do backend é código, não modelo de IA.
+!backend/app/models/
+!backend/app/models/**
+backend/app/models/**/__pycache__/
 
 # ---------- Sistema / Editor ----------
 .DS_Store
