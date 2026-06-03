@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     gemini_api_key: str = ""
     gemini_model: str = "gemini-2.5-flash"
 
+    reranker_model: str = "BAAI/bge-reranker-v2-m3"
+    reranker_device: str = ""
+    factcheck_threshold: float = 0.5
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
