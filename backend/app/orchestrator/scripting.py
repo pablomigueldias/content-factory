@@ -92,6 +92,7 @@ def run_scripting(job: VideoJob, db: Session, llm: LLMProvider | None = None) ->
             job_id=job.id,
             position=i,
             narration=scene.narration,
+            bravata=scene.bravata,
             verdade_tecnica=scene.verdade_tecnica,
             visual_description=scene.visual_description,
             duration_seconds=scene.duration_seconds,

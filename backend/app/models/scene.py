@@ -16,6 +16,7 @@ class Scene(Base):
     )
     position: Mapped[int] = mapped_column(Integer)
     narration: Mapped[str] = mapped_column(Text)
+    bravata: Mapped[str | None] = mapped_column(Text, default=None)
     verdade_tecnica: Mapped[str | None] = mapped_column(Text, default=None)
     visual_description: Mapped[str] = mapped_column(Text)
     duration_seconds: Mapped[int] = mapped_column(Integer)
