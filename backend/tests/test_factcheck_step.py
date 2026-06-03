@@ -14,8 +14,10 @@ class _ScriptedVerifier:
 
     def __init__(self, results: list[GroundingResult]):
         self._results = iter(results)
+        self.seen_claims: list[str] = []
 
     def ground(self, claim, candidate_facts):
+        self.seen_claims.append(claim)
         return next(self._results)
 
 
@@ -77,6 +79,37 @@ def test_factcheck_is_idempotent(db_session):
     assert scene.needs_review is False
     assert scene.supporting_fact_id == facts[0].id
     assert scene.review_reason is None
+
+
+def test_factcheck_grounds_on_technical_layer_only(db_session):
+    job = VideoJob(topic="async em Python")
+    db_session.add(job)
+    db_session.flush()
+    source = Source(job_id=job.id, source_type=SourceType.WIKIPEDIA,
+                    title="t", url="https://x", raw_content="...")
+    source.facts = [Fact(content="await suspende a corrotina.")]
+    db_session.add(source)
+    db_session.flush()
+    db_session.add(Scene(
+        job_id=job.id, position=0,
+        narration="Óbvio que eu domino async. await suspende a corrotina.",
+        verdade_tecnica="await suspende a corrotina.",
+        visual_description="v", duration_seconds=8,
+    ))
+    db_session.commit()
+
+    verifier = _ScriptedVerifier([GroundingResult(fact_index=0, score=0.9, verified=True)])
+    run_factcheck(job, db_session, verifier=verifier)
+
+    assert verifier.seen_claims == ["await suspende a corrotina."]
+
+
+def test_factcheck_falls_back_to_narration_for_legacy_scenes(db_session):
+    job, _ = _seed(db_session, n_scenes=1)  # _seed leaves verdade_tecnica NULL
+    verifier = _ScriptedVerifier([GroundingResult(fact_index=0, score=0.9, verified=True)])
+    run_factcheck(job, db_session, verifier=verifier)
+
+    assert verifier.seen_claims == ["cena 0"]
 
 
 def test_factcheck_without_scenes_raises(db_session):

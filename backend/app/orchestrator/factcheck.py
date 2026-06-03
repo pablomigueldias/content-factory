@@ -35,7 +35,9 @@ def run_factcheck(job: VideoJob, db: Session, verifier: Verifier | None = None) 
     flagged = 0
 
     for scene in scenes:
-        result = verifier.ground(scene.narration, fact_texts)
+        # Só a camada técnica é checada; a bravata é deboche da persona, não fato.
+        claim = scene.verdade_tecnica or scene.narration
+        result = verifier.ground(claim, fact_texts)
 
         if result.verified and result.fact_index is not None:
             supporting = facts[result.fact_index]

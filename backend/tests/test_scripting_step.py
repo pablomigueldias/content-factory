@@ -62,6 +62,9 @@ def test_run_scripting_creates_ordered_scenes(db_session):
         "Você olha pro céu todo dia e nunca entendeu nada. "
         "a luz azul tem comprimento de onda menor e espalha mais."
     )
+    assert scenes[0].verdade_tecnica == (
+        "a luz azul tem comprimento de onda menor e espalha mais."
+    )
     assert scenes[1].duration_seconds == 10
 
 
