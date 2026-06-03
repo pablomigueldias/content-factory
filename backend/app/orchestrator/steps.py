@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from app.models.video_job import JobStatus, VideoJob
 from app.orchestrator.research import run_research
 from app.orchestrator.editorial import run_editorial
+from app.orchestrator.scripting import run_scripting
 
 logger = logging.getLogger(__name__)
 
@@ -17,7 +18,7 @@ def _stub(step_name: str):
 STEP_HANDLERS = {
     JobStatus.RESEARCHING: run_research,
     JobStatus.EDITORIAL: run_editorial,
-    JobStatus.SCRIPTING: _stub("scripting"),
+    JobStatus.SCRIPTING: run_scripting,
     JobStatus.FACT_CHECKING: _stub("fact_checking"),
     JobStatus.NARRATING: _stub("narrating"),
     JobStatus.VISUALS: _stub("visuals"),
