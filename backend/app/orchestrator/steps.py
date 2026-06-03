@@ -6,6 +6,7 @@ from app.models.video_job import JobStatus, VideoJob
 from app.orchestrator.research import run_research
 from app.orchestrator.editorial import run_editorial
 from app.orchestrator.scripting import run_scripting
+from app.orchestrator.factcheck import run_factcheck
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +20,7 @@ STEP_HANDLERS = {
     JobStatus.RESEARCHING: run_research,
     JobStatus.EDITORIAL: run_editorial,
     JobStatus.SCRIPTING: run_scripting,
-    JobStatus.FACT_CHECKING: _stub("fact_checking"),
+    JobStatus.FACT_CHECKING: run_factcheck,
     JobStatus.NARRATING: _stub("narrating"),
     JobStatus.VISUALS: _stub("visuals"),
     JobStatus.EDITING: _stub("editing"),
