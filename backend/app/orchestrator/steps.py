@@ -7,6 +7,7 @@ from app.orchestrator.research import run_research
 from app.orchestrator.editorial import run_editorial
 from app.orchestrator.scripting import run_scripting
 from app.orchestrator.factcheck import run_factcheck
+from app.orchestrator.narration import run_narration
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ STEP_HANDLERS = {
     JobStatus.EDITORIAL: run_editorial,
     JobStatus.SCRIPTING: run_scripting,
     JobStatus.FACT_CHECKING: run_factcheck,
-    JobStatus.NARRATING: _stub("narrating"),
+    JobStatus.NARRATING: run_narration,
     JobStatus.VISUALS: _stub("visuals"),
     JobStatus.EDITING: _stub("editing"),
     JobStatus.SUBTITLING: _stub("subtitling"),

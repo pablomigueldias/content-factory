@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from app.models.video_job import JobStatus, VideoJob
 from app.orchestrator.steps import STEP_HANDLERS
 
+
 logger = logging.getLogger(__name__)
 
 
@@ -21,21 +22,21 @@ PIPELINE_ORDER: list[JobStatus] = [
 ]
 
 
-def run_pipeline(job: VideoJob, db: Session) -> None:
+def run_pipeline(job: VideoJob, db: Session, handlers: dict | None = None) -> None:
+    handlers = handlers if handlers is not None else STEP_HANDLERS
     try:
         for step in PIPELINE_ORDER:
             job.status = step
             db.commit()
 
-            handler = STEP_HANDLERS.get(step)
+            handler = handlers.get(step)
             if handler is not None:
                 handler(job, db)
-
 
             if step is JobStatus.READY_FOR_REVIEW:
                 logger.info("Job %s aguardando revisão humana.", job.id)
                 break
-    except Exception as exc:  
+    except Exception as exc:
         logger.exception("Falha no pipeline do job %s", job.id)
         job.status = JobStatus.FAILED
         job.error = str(exc)[:2000]
