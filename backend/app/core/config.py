@@ -14,10 +14,15 @@ class Settings(BaseSettings):
 
     media_root: str = "media"
 
-    tts_model_device: str = ""              
+    tts_model_device: str = ""
     tts_language: str = "pt"
-    tts_voice_reference: str = "" 
-     
+    tts_voice_reference: str = ""
+    # Tom da voz (entonação debochada do Bolonhesa). Defaults = defaults do Chatterbox;
+    # menor cfg_weight = fala mais lenta/arrastada. Calibrar via .env na Fase 1.
+    tts_exaggeration: float = 0.5
+    tts_cfg_weight: float = 0.5
+    tts_temperature: float = 0.8
+
     reranker_model: str = "BAAI/bge-reranker-v2-m3"
     reranker_device: str = ""
     factcheck_threshold: float = 0.5

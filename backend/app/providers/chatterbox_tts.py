@@ -23,7 +23,9 @@ def _resolve_device(configured: str) -> str:
 
 class ChatterboxProvider:
     def __init__(self, device: str | None = None, language: str | None = None,
-                 voice_reference: str | None = None):
+                 voice_reference: str | None = None,
+                 exaggeration: float | None = None, cfg_weight: float | None = None,
+                 temperature: float | None = None):
         self.device = _resolve_device(
             device if device is not None else settings.tts_model_device
         )
@@ -31,7 +33,27 @@ class ChatterboxProvider:
         self.voice_reference = (
             voice_reference if voice_reference is not None else settings.tts_voice_reference
         )
+        self.exaggeration = (
+            exaggeration if exaggeration is not None else settings.tts_exaggeration
+        )
+        self.cfg_weight = (
+            cfg_weight if cfg_weight is not None else settings.tts_cfg_weight
+        )
+        self.temperature = (
+            temperature if temperature is not None else settings.tts_temperature
+        )
         self._model = None
+
+    def _generate_kwargs(self) -> dict:
+        kwargs = {
+            "language_id": self.language,
+            "exaggeration": self.exaggeration,
+            "cfg_weight": self.cfg_weight,
+            "temperature": self.temperature,
+        }
+        if self.voice_reference:
+            kwargs["audio_prompt_path"] = self.voice_reference
+        return kwargs
 
     def _ensure_model(self):
         if self._model is None:
@@ -44,9 +66,7 @@ class ChatterboxProvider:
         import torchaudio as ta
 
         model = self._ensure_model()
-        kwargs = {"language_id": self.language}
-        if self.voice_reference:
-            kwargs["audio_prompt_path"] = self.voice_reference
+        kwargs = self._generate_kwargs()
 
         with gpu_lock("chatterbox"):
             wav = model.generate(text, **kwargs)  #type: ignore
