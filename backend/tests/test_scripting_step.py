@@ -20,8 +20,12 @@ class _FakeLLM:
 
 VALID_SCRIPT = (
     '{"scenes": ['
-    '{"narration": "Você olha pro céu todo dia.", "visual_description": "Céu azul", "duration_seconds": 6},'
-    '{"narration": "Mas nunca percebeu o que ele esconde.", "visual_description": "Luz dispersando", "duration_seconds": 10}'
+    '{"bravata": "Você olha pro céu todo dia e nunca entendeu nada.",'
+    ' "verdade_tecnica": "a luz azul tem comprimento de onda menor e espalha mais.",'
+    ' "visual_description": "Céu azul", "duration_seconds": 6},'
+    '{"bravata": "Mas relaxa, eu explico.",'
+    ' "verdade_tecnica": "esse espalhamento se chama efeito Rayleigh.",'
+    ' "visual_description": "Luz dispersando", "duration_seconds": 10}'
     ']}'
 )
 
@@ -50,10 +54,14 @@ def test_run_scripting_creates_ordered_scenes(db_session):
     db_session.commit()
 
     scenes = (
-        db_session.query(Scene).filter_by(job_id=job.id).order_by(Scene.position).all()
+        db_session.query(Scene).filter_by(
+            job_id=job.id).order_by(Scene.position).all()
     )
     assert [s.position for s in scenes] == [0, 1]
-    assert scenes[0].narration == "Você olha pro céu todo dia."
+    assert scenes[0].narration == (
+        "Você olha pro céu todo dia e nunca entendeu nada. "
+        "a luz azul tem comprimento de onda menor e espalha mais."
+    )
     assert scenes[1].duration_seconds == 10
 
 

@@ -37,16 +37,24 @@ ESTRUTURA NARRATIVA OBRIGATÓRIA DESTE VÍDEO:
 FATOS VERIFICADOS (use apenas estes; não invente):
 {facts}
 
+Cada cena é dividida em DUAS camadas de narração:
+- "bravata": a atitude debochada e arrogante do narrador — ego inflado, deboche, \
+auto-confiança patética. É o humor. Pode estar errada de ATITUDE, nunca de fato.
+- "verdade_tecnica": a informação CORRETA de verdade, sem invenção. É o que o \
+espectador aprende. Tem que estar tecnicamente certa, baseada nos fatos verificados.
+O áudio falado será a bravata seguida da verdade técnica, então as duas camadas \
+devem encaixar como uma fala contínua.
+
 Regras:
-- A primeira cena DEVE começar com o gancho.
-- Cada cena tem: narração (o que o narrador fala), descrição visual (o que aparece na tela) \
+- A primeira cena DEVE começar (na bravata) com o gancho.
+- Cada cena tem: bravata, verdade_tecnica, descrição visual (o que aparece na tela) \
 e duração em segundos (entre 2 e 60).
 - Escreva entre 4 e 10 cenas.
 - A narração deve fluir como texto falado contínuo entre as cenas, não tópicos soltos.
-- Respeite o tom da persona e a estrutura narrativa acima.
+- Respeite o tom da persona na bravata; mantenha a verdade_tecnica precisa.
 
 Responda APENAS com JSON no formato EXATO:
-{{"scenes": [{{"narration": "...", "visual_description": "...", "duration_seconds": 8}}]}}
+{{"scenes": [{{"bravata": "...", "verdade_tecnica": "...", "visual_description": "...", "duration_seconds": 8}}]}}
 """
 
 
