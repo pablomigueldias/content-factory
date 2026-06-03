@@ -37,7 +37,7 @@ class ChatterboxProvider:
         if self._model is None:
             from chatterbox.mtl_tts import ChatterboxMultilingualTTS 
             logger.info("Carregando Chatterbox multilingual em %s...", self.device)
-            self._model = ChatterboxMultilingualTTS.from_pretrained(device=self.device)
+            self._model = ChatterboxMultilingualTTS.from_pretrained(device=self.device) #type: ignore
         return self._model
 
     def synthesize(self, text: str, out_path: str) -> None:
@@ -49,7 +49,7 @@ class ChatterboxProvider:
             kwargs["audio_prompt_path"] = self.voice_reference
 
         with gpu_lock("chatterbox"):
-            wav = model.generate(text, **kwargs)
+            wav = model.generate(text, **kwargs)  #type: ignore
         ta.save(out_path, wav, model.sr)
         logger.debug("Áudio gerado: %s", out_path)
 
