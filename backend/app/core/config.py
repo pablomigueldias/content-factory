@@ -14,6 +14,10 @@ class Settings(BaseSettings):
 
     media_root: str = "media"
 
+    tts_model_device: str = ""              
+    tts_language: str = "pt"
+    tts_voice_reference: str = "" 
+     
     reranker_model: str = "BAAI/bge-reranker-v2-m3"
     reranker_device: str = ""
     factcheck_threshold: float = 0.5
