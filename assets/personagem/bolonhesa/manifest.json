@@ -1,0 +1,25 @@
+{
+  "personagem": "Nerd Bolonhesa",
+  "estilo": "flat 2D cartoon, contorno grosso, cores chapadas",
+  "ancora": "ancora/bolonhesa_ancora_v1.png",
+  "expressoes": [
+    { "slug": "neutro",          "emocao": "neutro",      "arquivo": "expressoes/bolonhesa_expr_neutro.png" },
+    { "slug": "deboche",         "emocao": "sarcasmo",    "arquivo": "expressoes/bolonhesa_expr_deboche.png" },
+    { "slug": "nerd",            "emocao": "pedante",     "arquivo": "expressoes/bolonhesa_expr_nerd.png" },
+    { "slug": "chocado",         "emocao": "surpresa",    "arquivo": "expressoes/bolonhesa_expr_chocado.png" },
+    { "slug": "olhos-revirados", "emocao": "tedio",       "arquivo": "expressoes/bolonhesa_expr_olhos-revirados.png" },
+    { "slug": "raiva",           "emocao": "raiva",       "arquivo": "expressoes/bolonhesa_expr_raiva.png" },
+    { "slug": "rindo",           "emocao": "deboche",     "arquivo": "expressoes/bolonhesa_expr_rindo.png" },
+    { "slug": "cansado",         "emocao": "exausto",     "arquivo": "expressoes/bolonhesa_expr_cansado.png" },
+    { "slug": "pensativo",       "emocao": "reflexao",    "arquivo": "expressoes/bolonhesa_expr_pensativo.png" },
+    { "slug": "eureka",          "emocao": "descoberta",  "arquivo": "expressoes/bolonhesa_expr_eureka.png" },
+    { "slug": "facepalm",        "emocao": "frustracao",  "arquivo": "expressoes/bolonhesa_expr_facepalm.png" },
+    { "slug": "joinha",          "emocao": "aprovacao",   "arquivo": "expressoes/bolonhesa_expr_joinha.png" },
+    { "slug": "desconfiado",     "emocao": "duvida",      "arquivo": "expressoes/bolonhesa_expr_desconfiado.png" },
+    { "slug": "aliviado",        "emocao": "alivio",      "arquivo": "expressoes/bolonhesa_expr_aliviado.png" }
+  ],
+  "poses": [
+    { "slug": "apontando", "arquivo": "poses/bolonhesa_pose_apontando.png" },
+    { "slug": "sentado",   "arquivo": "poses/bolonhesa_pose_sentado.png" }
+  ]
+}
