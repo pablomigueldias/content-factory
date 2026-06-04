@@ -41,6 +41,12 @@ assets_cache/
 *.jpeg
 tmp/
 
+# ---------- Assets do personagem ----------
+# (gerados manualmente no AI Studio — só o manifesto e os scripts vão pro git)
+assets/personagem/**/*.png
+assets/personagem/**/*.jpg
+assets/personagem/bolonhesa/_revisao/
+
 # ---------- Modelos locais / IA ----------
 *.gguf
 *.safetensors
