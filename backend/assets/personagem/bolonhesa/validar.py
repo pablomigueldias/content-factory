@@ -20,6 +20,8 @@ def arquivos_do_manifesto(dados):
     refs = set()
     if dados.get("ancora"):
         refs.add(dados["ancora"])
+    for item in dados.get("ancora_views", []):
+        refs.add(item["arquivo"])
     for item in dados.get("expressoes", []):
         refs.add(item["arquivo"])
     for item in dados.get("poses", []):

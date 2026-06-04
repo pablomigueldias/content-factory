@@ -16,9 +16,10 @@ _revisao/      # saída do contact_sheet.py (gitignored)
 ## Convenção de nomes
 
 ```
-ancora/bolonhesa_ancora_v1.png
-expressoes/bolonhesa_expr_<slug>.png     # ex: bolonhesa_expr_deboche.png
-poses/bolonhesa_pose_<slug>.png          # ex: bolonhesa_pose_apontando.png
+ancora/bolonhesa_ancora_v1.png                  # referência-mãe (frente)
+ancora/bolonhesa_ancora_<view>.png              # model-sheet: lateral-esquerda, lateral-direita
+expressoes/bolonhesa_expr_<slug>.png            # ex: bolonhesa_expr_deboche.png
+poses/bolonhesa_pose_<slug>.png                 # ex: bolonhesa_pose_apontando.png
 ```
 
 ### Slugs das expressões (batem com a bíblia do personagem)
@@ -26,17 +27,21 @@ poses/bolonhesa_pose_<slug>.png          # ex: bolonhesa_pose_apontando.png
 `neutro, deboche, nerd, chocado, olhos-revirados, raiva, rindo, cansado,
 pensativo, eureka, facepalm, joinha, desconfiado, aliviado`
 
+### Slugs das poses
+
+`apontando, sentado, bracos-cruzados, encolhendo-ombros`
+
 ## Fluxo de trabalho
 
 1. Gere a imagem no Google AI Studio usando a âncora como referência.
 2. Salve na pasta certa com o nome da convenção acima.
 3. Rode a folha de contato para bater o olho na consistência:
    ```
-   python assets/personagem/bolonhesa/contact_sheet.py
+   python backend/assets/personagem/bolonhesa/contact_sheet.py
    ```
 4. Valide a integridade contra o manifesto:
    ```
-   python assets/personagem/bolonhesa/validar.py
+   python backend/assets/personagem/bolonhesa/validar.py
    ```
 
 ## TODO — Fase 5+ (geração programática)

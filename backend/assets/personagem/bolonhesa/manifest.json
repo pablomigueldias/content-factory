@@ -2,6 +2,10 @@
   "personagem": "Nerd Bolonhesa",
   "estilo": "flat 2D cartoon, contorno grosso, cores chapadas",
   "ancora": "ancora/bolonhesa_ancora_v1.png",
+  "ancora_views": [
+    { "slug": "lateral-esquerda", "arquivo": "ancora/bolonhesa_ancora_lateral-esquerda.png" },
+    { "slug": "lateral-direita",  "arquivo": "ancora/bolonhesa_ancora_lateral-direita.png" }
+  ],
   "expressoes": [
     { "slug": "neutro",          "emocao": "neutro",      "arquivo": "expressoes/bolonhesa_expr_neutro.png" },
     { "slug": "deboche",         "emocao": "sarcasmo",    "arquivo": "expressoes/bolonhesa_expr_deboche.png" },
@@ -19,7 +23,9 @@
     { "slug": "aliviado",        "emocao": "alivio",      "arquivo": "expressoes/bolonhesa_expr_aliviado.png" }
   ],
   "poses": [
-    { "slug": "apontando", "arquivo": "poses/bolonhesa_pose_apontando.png" },
-    { "slug": "sentado",   "arquivo": "poses/bolonhesa_pose_sentado.png" }
+    { "slug": "apontando",        "arquivo": "poses/bolonhesa_pose_apontando.png" },
+    { "slug": "sentado",          "arquivo": "poses/bolonhesa_pose_sentado.png" },
+    { "slug": "bracos-cruzados",  "arquivo": "poses/bolonhesa_pose_bracos-cruzados.png" },
+    { "slug": "encolhendo-ombros","arquivo": "poses/bolonhesa_pose_encolhendo-ombros.png" }
   ]
 }
