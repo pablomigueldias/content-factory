@@ -14,6 +14,9 @@ class Settings(BaseSettings):
 
     media_root: str = "media"
 
+    # Manifesto da biblioteca do personagem (fonte única de expressões/poses válidas).
+    character_manifest_path: str = "assets/personagem/bolonhesa/manifest.json"
+
     tts_model_device: str = ""
     tts_language: str = "pt"
     tts_voice_reference: str = ""
