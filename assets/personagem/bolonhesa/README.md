@@ -41,8 +41,17 @@ pensativo, eureka, facepalm, joinha, desconfiado, aliviado`
 
 ## TODO — Fase 5+ (geração programática)
 
-Quando a geração for plugada no `_stub("visuals")`, criar um `gerar_expressoes.py`
-que usa a mesma `GEMINI_API_KEY` mas o **modelo de imagem**
-(`gemini-*-flash-image` / Nano Banana), passando a âncora como referência e
-iterando sobre os slugs do `manifest.json`. **Não automatizar antes de validar
-as 12-14 expressões na mão** — automatizar caro algo ainda não validado.
+> **Não fazer agora.** Só quando a geração for plugada no `_stub("visuals")`
+> (`backend/app/orchestrator/steps.py`).
+
+Criar um `gerar_expressoes.py` que:
+
+- usa a mesma `GEMINI_API_KEY`, mas o **modelo de imagem**
+  (`gemini-*-flash-image` / Nano Banana);
+- passa a âncora (`ancora` do `manifest.json`) como referência;
+- itera sobre os slugs do `manifest.json` (fonte única de verdade) e grava cada
+  PNG no caminho `arquivo` correspondente;
+- ao final, roda `validar.py` pra garantir que não sobrou nada faltando nem órfão.
+
+**Não automatizar antes de validar as 12-14 expressões na mão** — automatizar
+caro algo ainda não validado.
